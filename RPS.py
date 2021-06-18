@@ -5,60 +5,48 @@ import tkinter as tk
 from tkinter import * 
 from tkinter.ttk import *
 from PIL import ImageTk,Image  
+from tkinter import messagebox
 
 
-
-while True:
-    print(" Enter \n 1 Rock\n 2 Paper\n 3 Scissors")
-    UsersChoice = int(input("Enter a number"))
-    UsersChoice = UsersChoice%4
+def fun( buttonstatus):
+    UsersChoice = buttonstatus%4
     ComputersChoice = random.randint(1,3)
-    print(ComputersChoice)
+
 
     if( UsersChoice == ComputersChoice ):
-        print("TIE")
+        return "TIE"
     elif( (UsersChoice == 1 and ComputersChoice == 3) or (UsersChoice == 2 and ComputersChoice == 1) or (UsersChoice == 3 and ComputersChoice == 2)):
-        print("You won")
+        return "You won"
     else:
-        print("You lost")
-    Deci = input("Do you want to continue Y/N")    
-    if( Deci == "N" or Deci == "n" ):
-        break
-
-
-    
+        return "You lost"
+ 
     
 
 root = tk.Tk()
 
-def funR():
-    var = StringVar()  
-    messagebox.showinfo("Hello", "Red Button clicked")
-    msg = Message( root, text = "Welcome to Javatpoint")  
-    msg.pack()  
+def ROCK():
+    showMsg(1)
+    
+def PAPER():
+    showMsg(2)
 
-def funP():
-    var = StringVar()  
-    msg = Message( root, text = "Welcome to Javatpoint1")  
-    msg.pack()  
+def SCISSORS():
+    showMsg(3)    
 
 
-def funS():
-    var = StringVar()  
-    msg = Message( root, text = "Welcome to Javatpoint2")  
-    msg.pack()      
-
+def showMsg(buttonstatus):
+    text = fun(buttonstatus)
+    #text = "heyy"
+    messagebox.showinfo('Message', text)
+ 
 Rock = PhotoImage( file = r"Rock.png")
 Paper = PhotoImage( file = r"Paper.png")
 Scissors = PhotoImage( file = r"Scissors.png")
 Rock1 = Rock.subsample(20, 20)
 Paper1 = Paper.subsample(20, 20)
 Scissors1 = Scissors.subsample(20, 20)
-Button(root, text = 'Rock', image = Rock1, compound = LEFT, command = funR()).pack(side = LEFT)
-Button(root, text = 'Paper', image = Paper1, compound = LEFT,command = funP()).pack(side = LEFT)
-Button(root, text = 'Scissors', image = Scissors1, compound = LEFT, command = funS()).pack(side = LEFT)
-
-
-
+rockButt = Button(root, text = 'Rock', image = Rock1, compound = LEFT, command = ROCK).pack(side = LEFT)
+paperButt = Button(root, text = 'Paper', image = Paper1, compound = LEFT, command = PAPER).pack(side = LEFT)
+scissorsButt = Button(root, text = 'Scissors', image = Scissors1, compound = LEFT, command = SCISSORS).pack(side = LEFT)
 
 root.mainloop()
