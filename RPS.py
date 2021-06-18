@@ -26,14 +26,39 @@ while True:
         break
 
 
+    
+    
+
 root = tk.Tk()
+
+def funR():
+    var = StringVar()  
+    messagebox.showinfo("Hello", "Red Button clicked")
+    msg = Message( root, text = "Welcome to Javatpoint")  
+    msg.pack()  
+
+def funP():
+    var = StringVar()  
+    msg = Message( root, text = "Welcome to Javatpoint1")  
+    msg.pack()  
+
+
+def funS():
+    var = StringVar()  
+    msg = Message( root, text = "Welcome to Javatpoint2")  
+    msg.pack()      
+
 Rock = PhotoImage( file = r"Rock.png")
 Paper = PhotoImage( file = r"Paper.png")
 Scissors = PhotoImage( file = r"Scissors.png")
 Rock1 = Rock.subsample(20, 20)
 Paper1 = Paper.subsample(20, 20)
 Scissors1 = Scissors.subsample(20, 20)
-Button(root, text = 'Rock', image = Rock1, compound = LEFT).pack(side = LEFT)
-Button(root, text = 'Paper', image = Paper1, compound = LEFT).pack(side = LEFT)
-Button(root, text = 'Scissors', image = Scissors1, compound = LEFT).pack(side = LEFT)
+Button(root, text = 'Rock', image = Rock1, compound = LEFT, command = funR()).pack(side = LEFT)
+Button(root, text = 'Paper', image = Paper1, compound = LEFT,command = funP()).pack(side = LEFT)
+Button(root, text = 'Scissors', image = Scissors1, compound = LEFT, command = funS()).pack(side = LEFT)
+
+
+
+
 root.mainloop()
